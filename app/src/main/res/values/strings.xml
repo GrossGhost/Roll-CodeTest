@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Roll&amp;CodeTest</string>
+    <string name="last_start">Last start :</string>
+    <string name="time">Time</string>
+    <string name="count1">Count :</string>
+    <string name="count">Count</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
 </resources>

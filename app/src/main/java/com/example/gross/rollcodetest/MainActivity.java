@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 import static com.example.gross.rollcodetest.Constants.BROADCAST_ACTION;
 import static com.example.gross.rollcodetest.Constants.COUNT;
+import static com.example.gross.rollcodetest.Constants.ISACTIVETHREAD;
 import static com.example.gross.rollcodetest.Constants.LAST_DATA;
 
 
@@ -22,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     TextView tvTime, tvCount;
     Button btnStart, btnStop;
-    String count;
     SharedPreferences sPref;
     BroadcastReceiver br;
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvCount = (TextView) findViewById(R.id.tVCount);
 
 
-        //считывание данных с SharedPrefences
+        //read data from SharedPrefences
         sPref = getSharedPreferences("", MODE_PRIVATE);
         tvTime.setText(sPref.getString(LAST_DATA, "Last Data"));
         tvCount.setText(String.valueOf(sPref.getLong(COUNT, 0)));
@@ -49,9 +49,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onReceive(Context context, Intent intent) {
 
+                String count;
                 tvTime.setText(intent.getStringExtra(LAST_DATA));
                 count = String.valueOf(intent.getLongExtra(COUNT, 0));
                 tvCount.setText(count);
+
+                if (intent.getBooleanExtra(ISACTIVETHREAD, false)) {
+                    btnStart.setClickable(false);
+                    btnStop.setClickable(true);
+                } else {
+                    btnStart.setClickable(true);
+                    btnStop.setClickable(false);
+                }
 
             }
         };
@@ -65,25 +74,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
 
             case R.id.btnStart:
-                try {
-                    TimeUnit.SECONDS.sleep(5);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
                 startService(new Intent(this, MyService.class));
-                btnStart.setClickable(false);
-                btnStop.setClickable(true);
                 break;
 
             case R.id.btnStop:
-                try {
-                    TimeUnit.SECONDS.sleep(5);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+
                 stopService(new Intent(this, MyService.class));
-                btnStart.setClickable(true);
-                btnStop.setClickable(false);
                 break;
 
         }

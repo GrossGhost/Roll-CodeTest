@@ -9,5 +9,6 @@ public class Constants {
     public final static String BROADCAST_ACTION = "brodcast";
     public final static String LAST_DATA = "last_data";
     public final static String COUNT = "count";
+    public static final String ISACTIVETHREAD = "is_active_thread";
 
 }

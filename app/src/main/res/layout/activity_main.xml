@@ -8,7 +8,7 @@
     tools:context="com.example.gross.rollcodetest.MainActivity">
 
     <TextView
-        android:text="Last start :"
+        android:text="@string/last_start"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/labelTime"
@@ -18,7 +18,7 @@
         android:textColor="@android:color/black" />
 
     <TextView
-        android:text="Time"
+        android:text="@string/time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tVTime"
@@ -29,7 +29,7 @@
         android:textAlignment="center" />
 
     <TextView
-        android:text="Count :"
+        android:text="@string/count1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/labelCount"
@@ -38,7 +38,7 @@
         android:textColor="@android:color/black" />
 
     <TextView
-        android:text="Count"
+        android:text="@string/count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tVCount"
@@ -55,15 +55,15 @@
         android:layout_weight="1">
 
         <Button
-            android:text="Start"
-            android:layout_width="match_parent"
+            android:text="@string/start"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnStart"
             android:layout_weight="1" />
 
         <Button
-            android:text="Stop"
-            android:layout_width="match_parent"
+            android:text="@string/stop"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/btnStop"
             android:layout_weight="1"
