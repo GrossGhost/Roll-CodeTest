@@ -1,14 +1,10 @@
 package com.example.gross.rollcodetest;
 
-/**
- * Created by Gross on 13.04.2017.
- */
+class Constants {
 
-public class Constants {
-
-    public final static String BROADCAST_ACTION = "brodcast";
-    public final static String LAST_DATA = "last_data";
-    public final static String COUNT = "count";
-    public static final String ISACTIVETHREAD = "is_active_thread";
+    final static String BROADCAST_ACTION = "brodcast";
+    final static String LAST_DATA = "last_data";
+    final static String COUNT = "count";
+    static final String IS_ACTIVE_THREAD = "is_active_thread";
 
 }

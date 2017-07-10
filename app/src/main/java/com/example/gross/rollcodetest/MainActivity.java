@@ -11,20 +11,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.concurrent.TimeUnit;
 
 import static com.example.gross.rollcodetest.Constants.BROADCAST_ACTION;
 import static com.example.gross.rollcodetest.Constants.COUNT;
-import static com.example.gross.rollcodetest.Constants.ISACTIVETHREAD;
+import static com.example.gross.rollcodetest.Constants.IS_ACTIVE_THREAD;
 import static com.example.gross.rollcodetest.Constants.LAST_DATA;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView tvTime, tvCount;
-    Button btnStart, btnStop;
-    SharedPreferences sPref;
-    BroadcastReceiver br;
+    private TextView tvTime, tvCount;
+    private Button btnStart, btnStop;
+    private BroadcastReceiver br;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvTime = (TextView) findViewById(R.id.tVTime);
         tvCount = (TextView) findViewById(R.id.tVCount);
 
-
         //read data from SharedPrefences
-        sPref = getSharedPreferences("", MODE_PRIVATE);
+        SharedPreferences sPref = getSharedPreferences("", MODE_PRIVATE);
         tvTime.setText(sPref.getString(LAST_DATA, "Last Data"));
         tvCount.setText(String.valueOf(sPref.getLong(COUNT, 0)));
 
@@ -54,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 count = String.valueOf(intent.getLongExtra(COUNT, 0));
                 tvCount.setText(count);
 
-                if (intent.getBooleanExtra(ISACTIVETHREAD, false)) {
+                if (intent.getBooleanExtra(IS_ACTIVE_THREAD, false)) {
                     btnStart.setClickable(false);
                     btnStop.setClickable(true);
                 } else {
